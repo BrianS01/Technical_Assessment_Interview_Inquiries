@@ -1,0 +1,74 @@
+Pregunta 11
+
+Se tiene una matriz de 3 x 3 que contiene números del 1 al 9, pero esta matriz esta simulada usando una matriz unidimensional. Así, por ejemplo, esta matriz:
+
+1 2 9
+2 5 3
+5 1 5
+
+Se representaría como (1,2,9,2,5,3,5,1,5). El objetivo es identificar el camino que de la menor suma al recorrer el arreglo bi-dimencional de izquierda a derecha. Se empieza en la columna izquierda y se mueve siempre una columna a la derecha de la misma fila o a una fila hacia arriba o hacia abajo. En el ejemplo, si parte de 1, puede pasar al 2 o al 5. De ahí, si pasó al 5 puede pasar al 9 al 3 o al 5. Por otro lado, si pasa del 1 al 2, desde el 2 de la columna del medio no podría pasar al 5 de la ultima fila en la columna derecha.
+
+Es necesario encontrar el camino que produce el número más bajo al suma los valores de cada número que visita. Así que para el ejemplo, la ruta con la menor suma sería 1,2,3
+
+El código para declarar y poblar myArray ya está ahí, puede editarlo para probar con otros valores y puede hacer clic en el botón de actualizar junto a él para volver al valor original que se utilizará para validar su código durante la prueba.
+
+El resultado de su programa debe ser los 3 números por los que pasó para obtener la menor suma separados por un espacio. Para el ejemplo, la salida sería exactamente así:
+1 2 3
+
+Nota: Asumir que esta escribiendo el codigo dentro de una clase, por lo que no debe declarar la clase en si, solo el metodo public static void main para ejecutar su código.
+
+
+
+
+
+static int[] myArray = new int[] {1,2,9,2,5,3,5,1,5};
+
+public static void Main()
+{
+    //Your code here
+	int[][] matriz = new int[3][]
+	{
+		new int[3] {1,2,9},
+		new int[3] {2,5,3},
+		new int[3] {5,1,5}
+	};
+	
+	int n = matriz.Length;
+	
+    int posIni = 0;
+	
+    for(int i=0; i<n; i++)
+    {
+        if(matriz[i][0]<matriz[posIni][0])
+        {
+            posIni=i;
+        }
+    }
+    
+    int posInis = 0;
+	
+    for(int i=0; i<n; i++)
+    {
+        if(matriz[i][1]<matriz[posInis][1])
+        {
+            posInis=i;
+        }
+      
+    }
+
+    int posInit = 0;
+	
+    for(int i=0; i<n; i++)
+    {
+        if(matriz[i][2]<matriz[posInit][2])
+        {
+            posInit=i;
+        }
+    }
+	
+	Console.Write(matriz[posIni][0]);
+	Console.Write(" ");
+	Console.Write(matriz[posIni][1]);
+	Console.Write(" ");
+	Console.Write(matriz[posInit][2]);
+}
